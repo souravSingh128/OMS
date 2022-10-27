@@ -1,0 +1,24 @@
+.card {
+    width: auto;
+    border: 1px solid #1966AF;
+    box-shadow: none !important;
+    cursor: pointer;
+    /* filter: drop-shadow(0 0.2rem 0.25rem #1966AF) */
+
+}
+
+.card:focus {
+    background-color: #F6F6F6;
+  }
+.card>.card-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card>.card-title>.active {
+    color: green;
+}
+
+.card>.card-title>.in-active {
+    color: red;
+}

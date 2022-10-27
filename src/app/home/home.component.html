@@ -1,0 +1,30 @@
+<div class="container" >
+    <mat-form-field  class ="search-button" appearance="fill" >
+        <input type="text" matInput placeholder="Search" [(ngModel)]="searchValue" autofocus (keydown.enter)="searchOrder($event)">
+        <mat-icon matSuffix (click)="searchOrder($event)">search</mat-icon>
+    </mat-form-field>
+    <div style="display:flex; gap:20px">
+    <div style="width: 50%;">          
+           <div class="productList">
+                <app-product [data]="result" *ngIf="productAvailable " (showShipping)="addItem($event)" (shipInfo)="changeDetails($event)" (packinfo)="changeDetails($event)" >loading
+                </app-product>
+            </div>
+            <div *ngIf="!productAvailable && !landing"> no product found</div>
+
+        
+    </div>
+    <div *ngIf="showSideShipping" style="width: 50%;">
+        <div style="border: 1px solid #1966AF; text-align: center; margin-bottom: 20px;border-radius: 4px">
+            <h2>Customer Details – address and shipping
+                address
+            </h2>
+        </div>
+        <div style="border: 1px solid #1966AF;border-radius: 4px">
+            <h3>Details</h3>
+            <pre class="details">
+               {{showMessage}}
+            </pre>
+        </div>
+    </div>
+</div>
+</div>

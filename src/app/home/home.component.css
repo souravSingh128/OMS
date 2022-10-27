@@ -1,0 +1,17 @@
+.container {
+    padding: 10px 25px;
+    margin: 0 auto;
+    
+}
+mat-form-field.mat-form-field {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+
+.search-button {
+ border: 1px solid #1966AF;
+ margin: 0 148px;
+ width: 30%;
+}
+

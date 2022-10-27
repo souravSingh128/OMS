@@ -1,0 +1,113 @@
+<mat-card class="card" (click)="showMyContainerDetails($event)">
+    <div class="card-title">
+        <h2>{{data.data.posOrder}}</h2>
+        <h2 [ngClass]="data.data.isActive
+        ? 'active'
+        : 'in-active' ">{{data.data.isActive? 'Active': 'InActive'}}</h2>
+    </div>
+    <div style="display: flex; gap: 20px">
+        <p>PoS Order # : {{data.data.posOrder}}</p>
+        <p>External Order Reference :{{data.data.ExtOrderRef}}</p>
+    </div>
+    <div>
+        <p>Location number: {{data.data.LocNum}}</p>
+        <p>Channel: {{data.data.Channel}}</p>
+    </div>
+</mat-card>
+<div *ngIf="showMyContainer">
+    <cdk-accordion class="example-accordion">
+        <cdk-accordion-item *ngFor="let hero of subOrder; let index = index" #accordionItem="cdkAccordionItem"
+            class="example-accordion-item" role="button" tabindex="0" [attr.id]="'accordion-header-' + index"
+            [attr.aria-expanded]="accordionItem.expanded" [attr.aria-controls]="'accordion-body-' + index"
+            style="margin-top: 20px;">
+            <mat-card class="card" style="margin: 10px 0px;"
+            [attr.data-target]="accordionItem.expanded"
+                (click)="accordionItem.toggle();showShippingDetails($event, index)">
+                <h2>{{data.data.posOrder}}-{{index+1}}</h2>
+                <div style="display:flex; gap:100px ;">
+                    <p>Fulfilment Provider: {{hero.fulfilmentProvider}}</p>
+                    <p>Location number: {{hero.locNum}}</p>
+                    <p>Picking SLA: {{hero.pickingSLA}}</p>
+                </div>
+                <div>
+                    <p>Delivery Date: {{hero.delDate}}</p>
+                </div>
+            </mat-card>
+            <div class="example-accordion-item-body" role="region"
+                [style.display]="accordionItem.expanded ? '' : 'none'" [attr.id]="'accordion-body-' + index"
+                [attr.aria-labelledby]="'accordion-header-' + index">
+                <div style="display:flex; gap:10px; flex-direction: row;flex-wrap: nowrap;">
+                    <div style="border: 1px solid #1966AF;width: 40%; padding: 10px 30px 10px 10px;border-radius: 4px">
+                        <p>Order Allocation Lines</p>
+                        <div>
+                            <p>Line – 1</p>
+                            <ul style="list-style:none;">
+                                <li style="white-space: nowrap;">Order Line # : 2 - 50082011</li>
+                                <li>CANCELLED</li>
+                                <li>Picked Qty: 1</li>
+                                <li>Picked Qty: 1</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p>Line – 2</p>
+                            <ul style="list-style:none;">
+                                <li style="white-space: nowrap;">Order Line # : 2 - 50082011</li>
+                                <li>CANCELLED</li>
+                                <li>Picked Qty: 1</li>
+                                <li>Picked Qty: 1</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="border: 1px solid #1966AF;width: 30%; padding: 10px 30px 10px 10px;border-radius: 4px">
+                        <div (click)="packageInfo($event)">
+                            <p><strong>package-1</strong></p>
+                            <p>Poll Priority - Off Peak
+                                <br />
+                                TOLL PRIORITY
+                                <br />
+                                21
+                                <br />
+                                New
+                            </p>
+                        </div>
+                        <div (click)="shippingInfo($event)">
+                            <p><strong>shipping</strong></p>
+                            <p>Poll Priority - Off Peak
+                                <br />
+                                TOLL PRIORITY
+                                <br />
+                                21
+                                <br />
+                                New
+                            </p>
+                        </div>
+                    </div>
+                    <div style="border: 1px solid #1966AF;width: 30%; padding: 10px 30px 10px 10px;border-radius: 4px">
+                        <div (click)="packageInfo($event)">
+                            <p><strong>package-1</strong></p>
+                            <p>Poll Priority - Off Peak
+                                <br />
+                                TOLL PRIORITY
+                                <br />
+                                21
+                                <br />
+                                New
+                            </p>
+                        </div>
+                        <div (click)="shippingInfo($event)">
+                            <p><strong>shipping</strong></p>
+                            <p>Poll Priority - Off Peak
+                                <br />
+                                TOLL PRIORITY
+                                <br />
+                                21
+                                <br />
+                                New
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
+</div>
