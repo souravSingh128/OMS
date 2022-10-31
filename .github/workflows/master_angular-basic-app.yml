@@ -50,6 +50,6 @@ jobs:
         id: deploy-to-webapp
         with:
           app-name: 'angular-basic-app'
-          slot-name: 'Production'
+          slot-name: 'oms-app-development'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_18095646BE33451AA321A6AE3BB41662 }}
           package: .
